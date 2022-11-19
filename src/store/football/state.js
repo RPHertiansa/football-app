@@ -4,6 +4,7 @@ export default function () {
     competitionList: [],
     teamList: [],
     playerList: [],
-    playerDetail: {}
+    playerDetail: {},
+    isModalOpen: false
   };
 }

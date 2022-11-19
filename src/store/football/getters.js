@@ -17,3 +17,7 @@ export const getPlayerList = (state) => {
 export const getPlayerDetail = (state) => {
   return state.playerDetail;
 };
+
+export const isModalOpen = (state) => {
+  return state.isModalOpen;
+};

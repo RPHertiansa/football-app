@@ -17,3 +17,7 @@ export const setPlayerList = (state, value) => {
 export const setPlayerDetail = (state, value) => {
   state.playerDetail = value;
 };
+
+export const setModal = (state, value) => {
+  state.isModalOpen = value;
+};
