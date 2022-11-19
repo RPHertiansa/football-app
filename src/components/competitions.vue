@@ -11,13 +11,39 @@
             <div class="text-primary text-h5 text-bold q-my-md row items-center">
               <q-icon
                 class="q-mr-sm"
-                name="person_add"
+                name="sports_soccer"
                 size="36px"
               />
-              <span><b>Pilih Counter Anda</b></span>
+              <span><b>{{ props.title }}</b></span>
             </div>
           </div>
-          {{ competitionsList.length === 0 ? "TEST" : competitionsList }}
+          <div v-if="competitionsList.length === 0">
+            No Data
+          </div>
+          <div v-else>
+            <div v-for="competition in competitionsList" :key="competition">
+              <q-card class="my-card">
+                <q-card-section>
+                  <div class="text-h6">{{ competition.name }}</div>
+                  <div v-if="competition.emblem === null">
+                    <q-icon
+                      class="q-mr-sm"
+                      name="shield"
+                      size="60px"
+                    />
+                  </div>
+                  <div v-else>
+                    <img
+                      :alt="competition.name"
+                      :src="competition.emblem"
+                      style="width: 120px;"
+                    >
+                  </div>
+                </q-card-section>
+
+              </q-card>
+            </div>
+          </div>
           <q-btn
             name="ButtonClose"
             unelevated
@@ -44,8 +70,11 @@ export default defineComponent({
 </script>
 <script setup>
 import { useStore } from "vuex";
-import { computed } from "vue";
+import { computed, defineProps } from "vue";
 
+const props = defineProps({
+  title: { type: String, default: "" }
+});
 const store = useStore();
 
 const isModalOpen = computed(() => {
@@ -53,6 +82,7 @@ const isModalOpen = computed(() => {
 });
 const closeModal = () => {
   store.commit("football/setModal", false);
+  store.commit("football/setCompetitionList", []);
 };
 
 const competitionsList = computed(() => {

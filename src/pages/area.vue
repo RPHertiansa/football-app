@@ -1,7 +1,7 @@
 <template>
   <q-page class="flex flex-center">
     <div v-for="area in areas" :key="area">
-      <q-card class="my-card" @click="getCompetitions(area.id)">
+      <q-card class="my-card" @click="getCompetitions(area)">
         <q-card-section>
           <div class="text-h6">{{ area.name }}</div>
           <div v-if="area.flag === null">
@@ -31,7 +31,7 @@
       label="Selanjutnya"
       @click="getAreas"
     />
-    <competitions-modal />
+    <competitions-modal :title="selectedArea" />
   </q-page>
 </template>
 
@@ -43,7 +43,7 @@ export default defineComponent({
 });
 </script>
 <script setup>
-import { onMounted, computed } from "vue";
+import { onMounted, computed, ref } from "vue";
 import { useStore } from "vuex";
 import CompetitionsModal from "src/components/competitions";
 
@@ -57,8 +57,10 @@ const getAreas = () => {
 const areas = computed(() => {
   return store.getters["football/getAreaList"];
 });
-const getCompetitions = (id) => {
+const selectedArea = ref("");
+const getCompetitions = async (area) => {
+  await store.dispatch("football/getCompetitionList", area.id);
+  selectedArea.value = area.name;
   store.commit("football/setModal", true);
-  store.dispatch("football/getCompetitionList", id);
 };
 </script>
