@@ -22,7 +22,7 @@
           </div>
           <div v-else>
             <div v-for="competition in competitionsList" :key="competition">
-              <q-card class="my-card">
+              <q-card class="my-card" @click="getTeams(competition)">
                 <q-card-section>
                   <div class="text-h6">{{ competition.name }}</div>
                   <div v-if="competition.emblem === null">
@@ -71,11 +71,14 @@ export default defineComponent({
 <script setup>
 import { useStore } from "vuex";
 import { computed, defineProps } from "vue";
+import { useRouter } from "vue-router";
 
 const props = defineProps({
   title: { type: String, default: "" }
 });
 const store = useStore();
+const router = useRouter();
+
 
 const isModalOpen = computed(() => {
   return store.getters["football/isModalOpen"];
@@ -88,5 +91,8 @@ const closeModal = () => {
 const competitionsList = computed(() => {
   return store.getters["football/getCompetitionList"];
 });
-
+const getTeams = async (competition) => {
+  await store.dispatch("football/getTeamList", competition.code);
+  await router.push(`/competitions/${competition.code}/teams`);
+};
 </script>
