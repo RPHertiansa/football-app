@@ -13,7 +13,7 @@ export default {
         url: `${url}/areas`,
         headers: config
       });
-      return res;
+      return res.data;
     } catch (err) {
       console.error(err);
       throw err;
@@ -26,7 +26,7 @@ export default {
         url: `${url}/competitions?areas=${request}`,
         headers: config
       });
-      return res;
+      return res.data;
     } catch (err) {
       console.error(err);
       throw err;
@@ -39,7 +39,7 @@ export default {
         url: `${url}/competitions/${request}/teams`,
         headers: config
       });
-      return res;
+      return res.data;
     } catch (err) {
       console.error(err);
       throw err;
@@ -52,7 +52,7 @@ export default {
         url: `${url}/teams/${request}`,
         headers: config
       });
-      return res;
+      return res.data;
     } catch (err) {
       console.error(err);
       throw err;
@@ -65,7 +65,7 @@ export default {
         url: `${url}/persons/${request}`,
         headers: config
       });
-      return res;
+      return res.data;
     } catch (err) {
       console.error(err);
       throw err;
