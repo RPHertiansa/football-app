@@ -7,6 +7,7 @@ export default function () {
     playerList: [],
     playerDetail: {},
     isModalOpen: false,
-    isModalPlayerOpen: false
+    isModalPlayerOpen: false,
+    competitionDetail: {}
   };
 }

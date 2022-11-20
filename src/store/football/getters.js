@@ -29,3 +29,7 @@ export const isModalOpen = (state) => {
 export const isModalPlayerOpen = (state) => {
   return state.isModalPlayerOpen;
 };
+
+export const getCompetitionDetail = (state) => {
+  return state.competitionDetail;
+};

@@ -25,6 +25,7 @@ export const getCompetitionList = async ({ commit }, request) => {
 export const getTeamList = async ({ commit }, request) => {
   try {
     const res = await service.getTeamList(request);
+    commit("setCompetitionDetail", res.competition);
     commit("setTeamList", res.teams);
     return res;
   } catch (err) {
