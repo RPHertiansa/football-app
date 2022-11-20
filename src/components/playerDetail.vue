@@ -73,18 +73,10 @@ export default defineComponent({
 });
 </script>
 <script setup>
-import { onMounted, computed, defineProps } from "vue";
+import { computed } from "vue";
 import { useStore } from "vuex";
 
 const store = useStore();
-
-const props = defineProps({
-  id: { type: String, default: "" }
-});
-
-onMounted(() => {
-  getPlayerDetail();
-});
 
 const isModalPlayerOpen = computed(() => {
   return store.getters["football/isModalPlayerOpen"];
@@ -93,9 +85,6 @@ const closeModal = () => {
   store.commit("football/setModalPlayer", false);
 };
 
-const getPlayerDetail = () => {
-  store.dispatch("football/getPlayerDetail", props.id);
-};
 const playerDetail = computed(() => {
   return store.getters["football/getPlayerDetail"];
 });

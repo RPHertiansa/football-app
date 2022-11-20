@@ -59,7 +59,7 @@
         </q-card>
       </div>
     </div>
-    <player-modal :id="playerId" />
+    <player-modal />
   </q-page>
 </template>
 
