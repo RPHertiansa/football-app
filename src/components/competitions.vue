@@ -5,8 +5,8 @@
       v-model="isModalOpen"
       persistent
     >
-      <q-card class="modal-container">
-        <div class="q-py-md q-px-lg">
+      <q-card class="modal-container" style="width: 500px; max-width: 50vw;">
+        <div class="q-pa-md">
           <div>
             <div class="text-primary text-h5 text-bold q-my-md row items-center">
               <q-icon
@@ -20,9 +20,9 @@
           <div v-if="competitionsList.length === 0">
             No Data
           </div>
-          <div v-else>
-            <div v-for="competition in competitionsList" :key="competition">
-              <q-card class="my-card" @click="getTeams(competition)">
+          <div v-else class="row">
+            <div v-for="competition in competitionsList" :key="competition" class="col-6">
+              <q-card class="my-card q-mx-lg cursor-pointer" @click="getTeams(competition)">
                 <q-card-section>
                   <div class="text-h6">{{ competition.name }}</div>
                   <div v-if="competition.emblem === null">
@@ -44,17 +44,19 @@
               </q-card>
             </div>
           </div>
-          <q-btn
-            name="ButtonClose"
-            unelevated
-            no-caps
-            outline
-            class="btn-100 outline"
-            color="primary"
-            type="button"
-            label="Close"
-            @click="closeModal"
-          />
+          <div class="row">
+            <q-btn
+              name="ButtonClose"
+              unelevated
+              no-caps
+              outline
+              class="btn-100 outline q-mt-lg q-ml-auto"
+              color="primary"
+              type="button"
+              label="Close"
+              @click="closeModal"
+            />
+          </div>
         </div>
       </q-card>
     </q-dialog>
@@ -94,5 +96,6 @@ const competitionsList = computed(() => {
 const getTeams = async (competition) => {
   await store.dispatch("football/getTeamList", competition.code);
   await router.push(`/competitions/${competition.code}/teams`);
+  closeModal();
 };
 </script>
