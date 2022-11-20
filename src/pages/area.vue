@@ -1,36 +1,31 @@
 <template>
-  <q-page class="flex flex-center">
-    <div v-for="area in areas" :key="area">
-      <q-card class="my-card" @click="getCompetitions(area)">
-        <q-card-section>
-          <div class="text-h6">{{ area.name }}</div>
-          <div v-if="area.flag === null">
-            <q-icon
-              class="q-mr-sm"
-              name="flag"
-              size="60px"
-            />
-          </div>
-          <div v-else>
-            <img
-              :alt="area.name"
-              :src="area.flag"
-              style="width: 120px;"
-            >
-          </div>
-        </q-card-section>
+  <q-page class="flex flex-center q-pa-lg">
+    <div class="text-h3 text-center">Areas</div>
 
-      </q-card>
+    <div class="row">
+      <div v-for="area in areas" :key="area" class="col-3">
+        <q-card class="my-card q-ma-sm cursor-pointer" @click="getCompetitions(area)">
+          <q-card-section>
+            <div class="text-h6">{{ area.name }}</div>
+            <div v-if="area.flag === null">
+              <q-icon
+                class="q-mr-sm"
+                name="flag"
+                size="60px"
+              />
+            </div>
+            <div v-else>
+              <img
+                :alt="area.name"
+                :src="area.flag"
+                style="width: 120px;"
+              >
+            </div>
+          </q-card-section>
+
+        </q-card>
+      </div>
     </div>
-    <q-btn
-      name="ButtonNext"
-      no-caps
-      fab
-      stack
-      icon="fast_forward"
-      label="Selanjutnya"
-      @click="getAreas"
-    />
     <competitions-modal :title="selectedArea" />
   </q-page>
 </template>
