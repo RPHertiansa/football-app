@@ -25,3 +25,7 @@ export const setPlayerDetail = (state, value) => {
 export const setModal = (state, value) => {
   state.isModalOpen = value;
 };
+
+export const setModalPlayer = (state, value) => {
+  state.isModalPlayerOpen = value;
+};

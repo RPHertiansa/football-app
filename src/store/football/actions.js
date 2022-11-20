@@ -1,5 +1,5 @@
 const service = require("src/service/football").default;
-
+// TODO: Add loading state
 export const getAreaList = async ({ commit }) => {
   try {
     const res = await service.getAreaList();

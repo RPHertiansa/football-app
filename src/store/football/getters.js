@@ -25,3 +25,7 @@ export const getPlayerDetail = (state) => {
 export const isModalOpen = (state) => {
   return state.isModalOpen;
 };
+
+export const isModalPlayerOpen = (state) => {
+  return state.isModalPlayerOpen;
+};

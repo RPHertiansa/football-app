@@ -6,6 +6,7 @@ export default function () {
     teamDetail: {},
     playerList: [],
     playerDetail: {},
-    isModalOpen: false
+    isModalOpen: false,
+    isModalPlayerOpen: false
   };
 }

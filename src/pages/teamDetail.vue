@@ -59,6 +59,7 @@
         </q-card>
       </div>
     </div>
+    <player-modal :id="playerId" />
   </q-page>
 </template>
 
@@ -70,9 +71,10 @@ export default defineComponent({
 });
 </script>
 <script setup>
-import { onMounted, computed } from "vue";
+import { onMounted, computed, ref } from "vue";
 import { useStore } from "vuex";
 import { useRoute } from "vue-router";
+import PlayerModal from "src/components/playerDetail";
 
 const route = useRoute();
 onMounted(() => {
@@ -89,7 +91,10 @@ const teamDetail = computed(() => {
 const playerList = computed(() => {
   return store.getters["football/getPlayerList"];
 });
+const playerId = ref("");
 const getPlayerDetail = async (player) => {
   await store.dispatch("football/getPlayerDetail", player.id);
+  playerId.value = player.id;
+  store.commit("football/setModalPlayer", true);
 };
 </script>
