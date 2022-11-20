@@ -1,4 +1,4 @@
-import { showLoading, hideLoading } from "src/utils";
+import { showLoading, hideLoading, showErrorNotification } from "src/utils";
 
 const service = require("src/service/football").default;
 
@@ -12,6 +12,7 @@ export const getAreaList = async ({ commit }) => {
   } catch (err) {
     hideLoading();
     commit("setAreaList", []);
+    showErrorNotification(err);
     throw err;
   }
 };
@@ -26,6 +27,7 @@ export const getCompetitionList = async ({ commit }, request) => {
   } catch (err) {
     hideLoading();
     commit("setCompetitionList", []);
+    showErrorNotification(err);
     throw err;
   }
 };
@@ -40,6 +42,7 @@ export const getTeamList = async ({ commit }, request) => {
     return res;
   } catch (err) {
     hideLoading();
+    showErrorNotification(err);
     commit("setTeamList", []);
     throw err;
   }
@@ -55,6 +58,7 @@ export const getTeamDetail = async ({ commit }, request) => {
     return res;
   } catch (err) {
     hideLoading();
+    showErrorNotification(err);
     commit("setPlayerList", []);
     throw err;
   }
@@ -69,6 +73,7 @@ export const getPlayerDetail = async ({ commit }, request) => {
     return res;
   } catch (err) {
     hideLoading();
+    showErrorNotification(err);
     commit("setPlayerDetail", {});
     throw err;
   }
