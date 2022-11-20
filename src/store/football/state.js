@@ -3,6 +3,7 @@ export default function () {
     areaList: [],
     competitionList: [],
     teamList: [],
+    teamDetail: {},
     playerList: [],
     playerDetail: {},
     isModalOpen: false

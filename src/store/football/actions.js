@@ -37,6 +37,7 @@ export const getTeamDetail = async ({ commit }, request) => {
   try {
     const res = await service.getTeamDetail(request);
     commit("setPlayerList", res.squad);
+    commit("setTeamDetail", res);
     return res;
   } catch (err) {
     commit("setPlayerList", []);

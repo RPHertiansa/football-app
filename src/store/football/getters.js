@@ -10,6 +10,10 @@ export const getTeamList = (state) => {
   return state.teamList;
 };
 
+export const getTeamDetail = (state) => {
+  return state.teamDetail;
+};
+
 export const getPlayerList = (state) => {
   return state.playerList;
 };

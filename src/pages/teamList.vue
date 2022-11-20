@@ -34,9 +34,10 @@ export default defineComponent({
 <script setup>
 import { onMounted, computed } from "vue";
 import { useStore } from "vuex";
-import { useRoute } from "vue-router";
+import { useRoute, useRouter } from "vue-router";
 
 const route = useRoute();
+const router = useRouter();
 onMounted(() => {
   getTeams();
 });
@@ -50,5 +51,6 @@ const teams = computed(() => {
 
 const getTeamDetail = async (team) => {
   await store.dispatch("football/getTeamDetail", team.id);
+  await router.push(`/teams/${team.id}`);
 };
 </script>

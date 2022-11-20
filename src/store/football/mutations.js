@@ -10,6 +10,10 @@ export const setTeamList = (state, value) => {
   state.teamList = value;
 };
 
+export const setTeamDetail = (state, value) => {
+  state.teamDetail = value;
+};
+
 export const setPlayerList = (state, value) => {
   state.playerList = value;
 };
