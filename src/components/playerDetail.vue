@@ -5,8 +5,8 @@
       v-model="isModalPlayerOpen"
       persistent
     >
-      <q-card class="modal-container" style="width: 500px; max-width: 50vw;">
-        <div class="q-ma-md">
+      <q-card class="modal-container q-pa-md" style="width: 500px; max-width: 50vw;">
+        <div class="q-pa-md">
           <div class="row items-center">
             <div class="col-10">
               <div class="text-h4">
@@ -46,12 +46,14 @@
               </div>
             </div>
           </div>
+        </div>
+        <div class="row">
           <q-btn
             name="ButtonClose"
             unelevated
             no-caps
             outline
-            class="btn-100 outline"
+            class="btn-100 outline q-mt-lg q-ml-auto"
             color="primary"
             type="button"
             label="Close"

@@ -51,7 +51,7 @@
     <div class="text-h5 text-center">Players:</div>
     <div class="row q-mt-md">
       <div v-for="player in playerList" :key="player" class="col-3">
-        <q-card class="my-card q-mb-md q-mx-md" @click="getPlayerDetail(player)">
+        <q-card class="my-card q-mb-md q-mx-md cursor-pointer" @click="getPlayerDetail(player)">
           <q-card-section>
             <div class="text-h6">{{ player.name }}</div>
             <div class="text-caption">{{ player.position }}</div>
